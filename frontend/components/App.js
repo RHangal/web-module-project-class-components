@@ -1,4 +1,6 @@
 import React from "react";
+import TodoList from "./TodoList";
+import Form from "./Form";
 
 export default class App extends React.Component {
   constructor() {
@@ -8,7 +10,7 @@ export default class App extends React.Component {
         {
           name: "Organize Garage",
           id: 1528817077286, // could look different, you could use a timestamp to generate it
-          completed: false,
+          completed: true,
         },
         {
           name: "Bake Cookies",
@@ -20,26 +22,13 @@ export default class App extends React.Component {
   }
   render() {
     const { todos } = this.state;
-
     return (
       <div>
         <h1>Todos</h1>
 
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li key={todo.id}>
-                {todo.name}{" "}
-                {todo.completed ? <span>- Completed</span> : <span></span>}
-              </li>
-            );
-          })}
-        </ul>
+        <TodoList todos={todos} />
 
-        <form>
-          <input />
-          <button>Add</button>
-        </form>
+        <Form />
 
         <button>Clear</button>
       </div>
